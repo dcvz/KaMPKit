@@ -13,7 +13,7 @@ import io.ktor.client.request.HttpRequestBuilder
 import io.ktor.client.request.get
 import io.ktor.http.takeFrom
 
-class DogApiImpl(private val log: Kermit) : KtorApi {
+class DogApiImpl(private val basePath: String, private val log: Kermit) : KtorApi {
     private val client = HttpClient {
         install(JsonFeature) {
             serializer = KotlinxSerializer()
@@ -42,7 +42,7 @@ class DogApiImpl(private val log: Kermit) : KtorApi {
 
     private fun HttpRequestBuilder.dogs(path: String) {
         url {
-            takeFrom("https://dog.ceo/")
+            takeFrom(basePath)
             encodedPath = path
         }
     }

@@ -24,6 +24,15 @@ android {
         getByName("release") {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+
+            val url = "https://dog.ceo"
+            buildConfigField("String", "HOST_URL", "\"$url\"")
+        }
+        getByName("debug") {
+            val url = "https://dog.ceo"
+            buildConfigField("String", "HOST_URL", "\"$url\"")
+
+            applicationIdSuffix = ".debug"
         }
     }
     compileOptions {
