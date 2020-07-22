@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import android.util.Log
 import co.touchlab.kampkit.AppInfo
 import co.touchlab.kampkit.initKoin
+import org.koin.core.qualifier.qualifier
 import org.koin.dsl.module
 
 class MainApp : Application() {
@@ -15,12 +16,15 @@ class MainApp : Application() {
             module {
                 single<Context> { this@MainApp }
                 single<SharedPreferences> {
-                    get<Context>().getSharedPreferences("KAMPSTARTER_SETTINGS", Context.MODE_PRIVATE)
+                    get<Context>().getSharedPreferences("KAMPKIT_SETTINGS", Context.MODE_PRIVATE)
                 }
                 single<AppInfo> { AndroidAppInfo }
                 single {
                     { Log.i("Startup", "Hello from Android/Kotlin!") }
                 }
+
+                // Expose BuildConfig template to be used by KoinAndroid
+                single(qualifier = qualifier("HostURL")) { BuildConfig.HOST_URL }
             }
         )
     }

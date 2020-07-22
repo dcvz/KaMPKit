@@ -8,7 +8,28 @@
 /captures
 .externalNativeBuild
 .cxx
-*.xcuserstate
-*.xcbkptlist
 !/.idea/codeStyles/*
 !/.idea/inspectionProfiles/*
+Pods/
+
+## User settings
+**/xcuserdata/
+
+## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
+**/*.xcscmblueprint
+**/*.xccheckout
+
+## Xcode Patch
+**/!*.xcodeproj/xcshareddata/
+**/!*.xcworkspace/xcshareddata/
+contents.xcworkspacedata
+IDEWorkspaceChecks.plist
+**//*.gcno
+*.xcuserstate
+*.xcbkptlist
+
+## Tuist
+.tuist-generated
+
+### Xcode Patch ###
+WorkspaceSettings.xcsettings
